@@ -2,7 +2,7 @@
     require 'conect.php';
 ?> 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,7 +30,7 @@
         <!--Menu off canvas-->
         <div id="menuLat">
             <header>
-                <div class="datos-usuario">
+                <div class="menuHeader">
                     <p>Selecciona una categoría</p>
                 </div>
             </header>
@@ -49,16 +49,15 @@
             </nav>
         </div>
         <div id="dark"></div>
-
         <!--Contenido-->
         <div class="container">
             <div class="content">
                 <!--Filtros-->
 
-                <section class="users">
-                    <div class="user-left">
+                <section class="filters-block">
+                    <div class="left">
                     </div>
-                    <div class="user-right">
+                    <div class="right">
                         <div class="form-group">
                             <select class="form-control" id="tipus">
                                 <option value="">Tipus</option>
@@ -84,7 +83,7 @@
                                 $img = $products['id'] <= 135 ? $products['id'] : "00";
                                 echo "
                                     <!--<div>-->
-                                        <div class='product not-select'>
+                                        <div class='product product--not-selected'>
                                             <div class='image'>
                                                 <figure><img src='src/img/products/" . $img . ".jpg' alt=" . $products['nom'] . "></figure>
                                             </div>
@@ -112,8 +111,14 @@
 
             </div>
         </div>
-        <footer>
-
+        <!--Footer-->
+        <footer class="footer">
+            <div class="container">
+                <p>&copy;2021-2022</p>
+                <p>Edgar Capagons - CFGS 1r DAM</p>
+                <p>PROJECTE 1 - Gestió d'inventari</p>
+            </div>
+            
         </footer>
     </div>
 

@@ -3,8 +3,8 @@
     //Dades de conexió
     $user = "proinv";
     $pass = "12345";
-    $host = "192.168.18.55";    //Insti
-    //$host = "192.168.1.55";    //Casa
+    //$host = "192.168.18.55";    //Insti
+    $host = "192.168.1.55";    //Casa
     $schema = "db_projecte";
 
     $connection = mysqli_connect($host,$user,$pass) or die ("No s'ha pogut conectar amb el servidor de la Base de dades"); 
@@ -20,7 +20,4 @@
     $totesCategories = mysqli_query( $connection, $categories ) or die ( "Hi ha algún error amb la consulta");
     $totsTipus = mysqli_query( $connection, $tipus ) or die ( "Hi ha algún error amb la consulta");
 
-    // $products = mysqli_fetch_array($totsProductes);
-    // $categoryList = mysqli_fetch_array($totesCategories);
-    // $tipusProduct = mysqli_fetch_array($totsTipus);
 ?>
