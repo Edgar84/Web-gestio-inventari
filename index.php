@@ -2,81 +2,127 @@
     require 'conect.php';
 ?> 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projecte</title>
+    <title>Top DVD</title>
     <style>@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');</style>
     <link rel="stylesheet" href="src/css/bootstrap-5.1.3/bootstrap.min.css"/>
     <link rel="stylesheet" href="src/css/style.css"/>
 </head>
 <body>
-    <header>
-        <div class="container margin-bottom_16">
-            <div class="bg-primary">
-                <h1>Hello</h1>
+    <div class="wrapper">
+        
+        <!--Cabecera-->
+        <div class="container">
+            <header class="top-bar">
+                <div class="empty"></div>
+                <div class="page-title">
+                    <a href="main.php" title="Top DVD"></a>
+                </div>
+                <div>
+                    <a href="#" id="bMenu">&#9776</a>
+                </div>
+            </header>
+        </div>
+        <!--Menu off canvas-->
+        <div id="menuLat">
+            <header>
+                <div class="menuHeader">
+                    <p>Selecciona una categoría</p>
+                </div>
+            </header>
+            <nav class="list-menu">
+                <ul>
+                    <?php
+                        while ($categoryList = mysqli_fetch_array($totesCategories)){
+                            echo "
+                                <li class='nav-item'>
+                                    <a class='nav-link' href='#'>" . $categoryList['categoria'] . "</a>
+                                </li>
+                            ";
+                        }
+                    ?>
+                </ul>
+            </nav>
+        </div>
+        <div id="dark"></div>
+        <!--Contenido-->
+        <div class="container">
+            <div class="content">
+                <!--Filtros-->
+
+                <section class="filters-block">
+                    <div class="left">
+                    </div>
+                    <div class="right">
+                        <div class="form-group">
+                            <select class="form-control" id="tipus">
+                                <option value="">Tipus</option>
+                                <?php
+                                    while ($tipusProduct = mysqli_fetch_array($totsTipus)){
+                                        echo "
+                                            <option value='" . $tipusProduct['tipus'] . "'>"
+                                            . $tipusProduct['tipus'] . 
+                                            "</option>
+                                        ";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="main-section">
+                    <section class="products-grid-view">
+                        <div class="row-grid">
+                            <?php
+                            while ($products = mysqli_fetch_array($totsProductes)){
+                                $img = $products['id'] <= 135 ? $products['id'] : "00";
+                                echo "
+                                    <!--<div>-->
+                                        <div class='product product--not-selected'>
+                                            <div class='image'>
+                                                <figure><img src='src/img/products/" . $img . ".jpg' alt=" . $products['nom'] . "></figure>
+                                            </div>
+                                            <div class='product-info'>
+                                                <div class='product-info-tittle'>
+                                                    <h2 title='" . $products['nom'] . "'>" . $products['nom'] . "</h2>
+                                                </div>
+                                                <div class='product-desc'>
+                                                    <p class='any'>(" . $products['any'] . ")</p>
+                                                    <p class='tipus'>" . $products['tipus'] . "</p>
+                                                    <p class='price'>" . $products['preu'] . "<span>€</span></p>
+                                                    <p class='category'>" . $products['categoria'] . "</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <!--</div>-->";
+                                }
+                            ?>
+                            <div class="alert">
+                                <p>No hem trobat filtres per la opció selecionada</p>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+
             </div>
         </div>
-    </header>
-    <div class="container margin-bottom_16 search-content">
-        <form>
-            <div>
-                <input type="text" class="form-control" id="search" placeholder="Busca un producte">
+        <!--Footer-->
+        <footer class="footer">
+            <div class="container">
+                <p>&copy;2021-2022</p>
+                <p>Edgar Capagons - CFGS 1r DAM</p>
+                <p>PROJECTE 1 - Gestió d'inventari</p>
             </div>
-        </form>
+            
+        </footer>
     </div>
-    <div class="container">
-        <section class="table table-responsive">
-            <?php 
-                // $consulta = "SELECT * FROM `productes`";
-                // $totsProductes = mysqli_query( $connection, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
-                echo "<table class='table'>";
-                echo "<thead class='table-head'>";
-                echo "<tr>";
-                echo "<th class='order-0'>Id</th>";
-                echo "<th class='order-1'>Nom</th>";
-                echo "<th class='order-2'>Tipus</th>";
-                echo "<th class='order-3'>Preu</th>";
-                echo "</tr>";
-                echo "</thead>";
-                echo "<tbody class='table-body'>";
-                while ($columna = mysqli_fetch_array($totsProductes)){
-                    echo "<tr>";
-                    echo "<td class='order-0 cell-w-100'><span class='aria-label'>Id</span>" . $columna['id'] . "</td><td class='order-1 cell-w-100'><span class='aria-label'>Nom</span>" . $columna['nom'] . "</td><td class='order-2 cell-w-100'><span class='aria-label'>Tipus</span>" . $columna['tipus'] . "</td><td class='order-3 cell-w-100'><span class='aria-label'>Preu</span>" . $columna['preu'] . "€ </td>";
-                    echo "</tr>";
-                }
-                echo "</tbody>";
-                echo "</table>";
-            ?>
-        </section>
-        <section class="grid grid-products">
-            <div class="row">
-                <?php
-                while ($columna = mysqli_fetch_array($totsProductes)){
-                    echo "
-                        <div class='col-6 col-md-3'>
-                            <div class='product'>
-                                <div class='images'>
-                                    <figure><img src='src/img/products/" .$columna['id']. ".jpg' alt=" . $columna['nom'] . "></figure>
-                                </div>
-                                <div class='product-info'>
-                                    <div class='product-info-tittle'>
-                                        <h2>" . $columna['nom'] . "</h2>
-                                    </div>
-                                    <div class='product-desc'>
-                                        <p class='tipus'>" . $columna['tipus'] . "</p>
-                                        <p class='price'><span>" . $columna['preu'] . "</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>";
-                    }
-                ?>
-            </div>
-        </section>
-    </div>
+
+    <!--Scripts-->
     <script src="src/js/functions.js"></script>
 </body>
 </html>
