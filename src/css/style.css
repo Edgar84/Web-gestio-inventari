@@ -213,7 +213,7 @@ input, button, textarea, select {
 
 /* Content */
 .content {
-  min-height: calc(100vh- 159px);
+  min-height: calc(100vh - 188px);
   padding-bottom: 50px;
 }
 
@@ -287,9 +287,17 @@ input, button, textarea, select {
   color: var(--bg-grey);
 }
 
-.products-grid-view .product .product-info .product-desc .tipus, .products-grid-view .product .product-info .product-desc .any {
+.products-grid-view .product .product-info .product-desc .tipus, 
+.products-grid-view .product .product-info .product-desc .any {
   color: var(--grey);
+}
+.products-grid-view .product .product-info .product-desc .tipus, 
+.products-grid-view .product .product-info .product-desc .any, 
+.products-grid-view .product .product-info .product-desc .stock {
   font-size: .8rem;
+}
+.products-grid-view .product .product-info .product-desc .stock {
+  color: var(--pink);
 }
 
 .products-grid-view .product .product-info .product-desc .any {
