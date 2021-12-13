@@ -291,8 +291,9 @@ input, button, textarea, select {
 .products-grid-view .product .product-info .product-desc .any {
   color: var(--grey);
 }
-.products-grid-view .product .product-info .product-desc .tipus, .products-grid-view .product .product-info .product-desc .any, .products-grid-view .product .product-info .product-desc .stock {
-  
+.products-grid-view .product .product-info .product-desc .tipus, 
+.products-grid-view .product .product-info .product-desc .any, 
+.products-grid-view .product .product-info .product-desc .stock {
   font-size: .8rem;
 }
 .products-grid-view .product .product-info .product-desc .stock {
