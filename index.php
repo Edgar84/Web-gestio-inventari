@@ -94,6 +94,7 @@
                                                 <div class='product-desc'>
                                                     <p class='any'>(" . $products['any'] . ")</p>
                                                     <p class='tipus'>" . $products['tipus'] . "</p>
+                                                    <p class='stock'>" . $products['stock'] . " unitats</p>
                                                     <p class='price'>" . $products['preu'] . "<span>€</span></p>
                                                     <p class='category'>" . $products['categoria'] . "</p>
                                                 </div>
