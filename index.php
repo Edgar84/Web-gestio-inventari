@@ -1,5 +1,11 @@
 <?php
     require 'conect.php';
+    
+    $dom = new DOMDocument;
+    $dom->load('book.xml');
+    if ($dom->validate()) {
+        echo "¡Este documento es válido!\n";
+    }
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +26,7 @@
             <header class="top-bar">
                 <div class="empty"></div>
                 <div class="page-title">
-                    <a href="main.php" title="Top DVD"></a>
+                    <a href="index.php" title="Top DVD"></a>
                 </div>
                 <div>
                     <a href="#" id="bMenu">&#9776</a>
@@ -85,7 +91,7 @@
                                     <!--<div>-->
                                         <div class='product product--not-selected'>
                                             <div class='image'>
-                                                <figure><img src='src/img/products/" . $img . ".jpg' alt=" . $products['nom'] . "></figure>
+                                                <figure><img src='src/img/products/" . $img . ".jpg' alt='" . $products['nom'] . "'></figure>
                                             </div>
                                             <div class='product-info'>
                                                 <div class='product-info-tittle'>
@@ -115,9 +121,9 @@
         <!--Footer-->
         <footer class="footer">
             <div class="container">
-                <p>&copy;2021-2022</p>
-                <p>Edgar Capagons - CFGS 1r DAM</p>
+                <p>&copy; Edgar Capagons</p>
                 <p>PROJECTE 1 - Gestió d'inventari</p>
+                <p>CFGS 1r DAM</p>
             </div>
             
         </footer>
